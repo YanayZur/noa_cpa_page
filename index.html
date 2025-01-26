@@ -81,21 +81,19 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #7a6c5a;
+            background: none;
             width: 50px;
             height: 50px;
-            border-radius: 5px;
             z-index: 1000;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
             font-size: 1.2em;
         }
         .accessibility-menu img {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
         }
         .accessibility-panel {
             position: fixed;
@@ -141,11 +139,11 @@
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            background: #5e3b29;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
+            background: none;
+            color: #5e3b29;
+            border: 2px solid #5e3b29;
+            border-radius: 50%;
+            padding: 5px;
             cursor: pointer;
             font-size: 1.2em;
             width: 30px;
@@ -155,7 +153,8 @@
             justify-content: center;
         }
         .close-button:hover {
-            background: #7a6c5a;
+            background: #5e3b29;
+            color: #fff;
         }
         footer {
             margin-top: 30px;
@@ -200,7 +199,7 @@
 </head>
 <body>
     <div class="accessibility-menu">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Accessibility_icon.svg" alt="Accessibility Icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Accessibility_template_icon_2.svg" alt="Accessibility Icon">
     </div>
     <div class="accessibility-panel">
         <button class="close-button">X</button>
