@@ -29,19 +29,6 @@
         .header {
             margin-bottom: 20px;
         }
-        .profile-image {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 5px solid #e0d2c3;
-        }
-        @media (max-width: 600px) {
-            .profile-image {
-                max-width: 200px;
-                border-width: 3px;
-            }
-        }
         h1 {
             font-size: 2em;
             color: #5e3b29;
@@ -90,6 +77,86 @@
             width: 20px;
             height: 20px;
         }
+        .accessibility-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #7a6c5a;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            z-index: 1000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2em;
+        }
+        .accessibility-menu img {
+            width: 30px;
+            height: 30px;
+        }
+        .accessibility-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            border-left: 1px solid #ccc;
+            box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            padding: 20px;
+            text-align: right;
+            font-size: 0.9em;
+        }
+        .accessibility-panel.open {
+            transform: translateX(0);
+        }
+        .accessibility-panel h3 {
+            margin-top: 0;
+            color: #5e3b29;
+        }
+        .accessibility-panel button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #5e3b29;
+            color: #fff;
+            transition: background 0.3s ease;
+        }
+        .accessibility-panel button:hover {
+            background: #7a6c5a;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #5e3b29;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-button:hover {
+            background: #7a6c5a;
+        }
         footer {
             margin-top: 30px;
             color: #7a6c5a;
@@ -98,8 +165,50 @@
             padding: 10px 5%;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menu = document.querySelector('.accessibility-menu');
+            const panel = document.querySelector('.accessibility-panel');
+            const closeButton = document.querySelector('.close-button');
+
+            menu.addEventListener('click', function () {
+                panel.classList.toggle('open');
+            });
+
+            closeButton.addEventListener('click', function () {
+                panel.classList.remove('open');
+            });
+
+            let fontSize = 16; // Default font size
+            document.querySelector('#increase-text').addEventListener('click', function () {
+                fontSize += 2;
+                document.body.style.fontSize = fontSize + 'px';
+            });
+
+            document.querySelector('#decrease-text').addEventListener('click', function () {
+                fontSize = Math.max(12, fontSize - 2); // Prevent font size going below 12px
+                document.body.style.fontSize = fontSize + 'px';
+            });
+
+            let inverted = false;
+            document.querySelector('#invert-colors').addEventListener('click', function () {
+                inverted = !inverted;
+                document.body.style.filter = inverted ? 'invert(1)' : 'invert(0)';
+            });
+        });
+    </script>
 </head>
 <body>
+    <div class="accessibility-menu">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Accessibility_icon.svg" alt="Accessibility Icon">
+    </div>
+    <div class="accessibility-panel">
+        <button class="close-button">X</button>
+        <h3>אפשרויות נגישות:</h3>
+        <button id="increase-text">הגדל טקסט</button>
+        <button id="decrease-text">הקטן טקסט</button>
+        <button id="invert-colors">היפוך צבעים</button>
+    </div>
     <div class="container">
         <div class="header">
             <h1>נועה דבוש ינאי - רואת חשבון</h1>
